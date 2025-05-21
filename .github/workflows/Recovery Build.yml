@@ -80,7 +80,9 @@ jobs:
        clang \
        g++-10-multilib \
        libc6-dev \
-       lib32ncurses6-dev \
+       lib32ncurses6 \
+       libncurses-dev \
+       libncurses6 \
        xorg-dev \
        libx11-dev \
        tree \
@@ -91,7 +93,6 @@ jobs:
        bc \
        ccache \
        liblz4-tool \
-       libncurses5-dev \
        libsdl2-dev \
        libwxgtk3.2-dev \
        libxml2 \
@@ -105,7 +106,6 @@ jobs:
        ncftp \
        qemu-user-static \
        libstdc++-10-dev \
-       libncurses6 \
        e2fsprogs \
        python3 \
        android-sdk-platform-tools \
