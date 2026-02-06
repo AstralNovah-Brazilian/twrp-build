@@ -18,11 +18,11 @@ on:
       DEVICE_TREE_BRANCH:
         description: 'Branch do device tree'
         required: true
-        default: 'twrp-12.1'
+        default: 'main'
       DEVICE_PATH:
         description: 'Caminho do device tree'
         required: true
-        default: 'device/samsung/a13'
+        default: 'device/motorola/edge40neo'
       COMMON_TREE_URL:
         description: 'URL do common tree (se não houver, deixe em branco)'
         required: false
@@ -32,15 +32,15 @@ on:
       DEVICE_NAME:
         description: 'Nome do dispositivo'
         required: true
-        default: 'a13'
+        default: 'edge40neo'
       MAKEFILE_NAME:
         description: 'Nome do makefile'
         required: true
-        default: 'twrp_a13'
+        default: 'twrp_edge40neo'
       BUILD_TARGET:
         description: 'Target de build'
         required: true
-        default: 'recoveryimage'
+        default: 'vendorbootimage'
 
 jobs:
   build:
@@ -157,7 +157,7 @@ jobs:
       run: |
        echo '<?xml version="1.0" encoding="UTF-8"?>' > .repo/local_manifests/device.xml
        echo '<manifest>' >> .repo/local_manifests/device.xml
-       echo '  <project name="justsarx/twrpdt-manaus-U1TM34.107_34_3" path="device/motorola/manaus" remote="github" revision="main"/>' >> .repo/local_manifests/device.xml
+       echo '  <project name="Matheus-TestUser1/twrpdt-manaus-U1TM34.107_34_3" path="device/motorola/edge40neo" remote="github" revision="main"/>' >> .repo/local_manifests/device.xml
        echo '</manifest>' >> .repo/local_manifests/device.xml
       working-directory: ${{ steps.pwd.outputs.workspace-folder }}
 
@@ -183,12 +183,12 @@ jobs:
         export ALLOW_MISSING_DEPENDENCIES=true
         lunch ${{ github.event.inputs.MAKEFILE_NAME }}-eng && make clean && mka -j4 ${{ github.event.inputs.BUILD_TARGET }}
       working-directory: ${{ steps.pwd.outputs.workspace-folder }}
-
     - name: Upload to Release
       uses: softprops/action-gh-release@v1
       with:
         files: |
-          workspace/out/target/product/manaus/recovery.img
+          workspace/out/target/product/edge40neo/vendor_boot.img
+
         name: ${{ github.event.inputs.DEVICE_NAME }}-${{ github.run_id }}
         tag_name: ${{ github.run_id }}
         body: |
