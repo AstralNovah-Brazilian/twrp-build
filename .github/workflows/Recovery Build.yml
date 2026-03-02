@@ -14,8 +14,7 @@ on:
       DEVICE_TREE_URL:
         description: 'URL do device tree'
         required: true
-        default: 'https://github.com/Matheus-TestUser1/twrpdt-manaus-U1TM34.107_
-34_3'
+        default: https://github.com/twrpdtgen/android_device_motorola_manaus
       DEVICE_TREE_BRANCH:
         description: 'Branch do device tree'
         required: true
@@ -23,7 +22,7 @@ on:
       DEVICE_PATH:
         description: 'Caminho do device tree'
         required: true
-        default: 'device/motorola/edge40neo'
+        default: 'device/motorola/manaus'
       COMMON_TREE_URL:
         description: 'URL do common tree (se não houver, deixe em branco)'
         required: false
@@ -37,7 +36,7 @@ on:
       MAKEFILE_NAME:
         description: 'Nome do makefile'
         required: true
-        default: 'twrp_edge40neo'
+        default: 'omni_manaus'
       BUILD_TARGET:
         description: 'Target de build'
         required: true
